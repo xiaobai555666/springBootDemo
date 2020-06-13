@@ -1,0 +1,74 @@
+# 项目基础设置
+server:
+  port: 8088
+  #servlet:
+    #context-path: /yby
+  tomcat:
+    uri-encoding: UTF-8
+    # 最大工作线程数 默认200
+    max-thread: 800
+    # 最大连接数
+    max-connections: 2000
+    # 最小工作空闲线程数 默认数10
+    min-spare-threads: 30
+
+# spring 相关
+spring:
+  main.allow-bean-definition-overriding: true #遇到相同名字允许注册
+  datasource:
+    test: #数据源1
+      driver_class_name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&serverTimezone=UTC&useSSL=false
+      username: root
+      password: password
+      testOnBorrow: true
+      validationQuery: SELECT 1
+      timeBetweenEvictionRunsMillis: 60000
+    litemall: #数据源2
+      url:  jdbc:mysql://127.0.0.1:3306/litemall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false&autoReconnect=true
+      driver_class_name:  com.mysql.jdbc.Driver
+      username:  litemall
+      password:  litemall123456
+      testOnBorrow: true
+      validationQuery: SELECT 1
+      timeBetweenEvictionRunsMillis: 60000
+  kafka:
+    bootstrap-servers: node1:9092,node2:9092,node3:9092
+    producer:
+      retries: 0
+      batch-size: 65536
+      buffer-memory: 524288
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  # redis 配置信息
+  redis:
+    database: 5
+    host: 47.110.145.5
+    port: 6379
+    password: yagena&2019*2020
+    # 连接超时时间（记得添加单位，Duration）
+    timeout: 10000ms
+    # Redis默认情况下有16个分片，这里配置具体使用的分片
+    lettuce:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制） 默认 8
+        max-active: 200
+        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+        max-wait: -1ms
+        # 连接池中的最大空闲连接 默认 8
+        max-idle: 8
+        # 连接池中的最小空闲连接 默认 0
+        min-idle: 0
+config:
+  kafka:
+    topic: MQ_YAGENA_SINGLE_DEV
+    notify_topic: MQ_YAGENA_NOTIFY_SINGLE_DEV
+canal:
+  client:
+    instances:
+      example:
+        host: 192.168.2.233
+        port: 11111
+        batchSize: 1000
+
+
