@@ -19,7 +19,7 @@
         <hutool.version>4.6.1</hutool.version>
         <mybatis-plus.version>3.3.1.tmp</mybatis-plus.version>
         <fastjson.version>1.2.69</fastjson.version>
-        <httpclient.version>4.5.5</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <druid.version>1.1.9</druid.version>
         <validator.version>6.1.2.Final</validator.version>
         <canal.client.version>1.0.24</canal.client.version>
